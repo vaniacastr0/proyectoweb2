@@ -3,24 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Imagen;
+
 
 class HomeController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->except(['index']);
+    }
+
     public function index(){
         return view('home.index');
     }
 
-    public function login(Request $request){
-        $tipo = $request->tipo;
-        if ($tipo === 'estudiante'){
-            return redirect()->route('estudiantes.ingreso');
-
-        } elseif ($tipo === 'admin'){
-            return redirect()->route('administradores.profesores');
-        } elseif ($tipo === 'profesor'){
-            return redirect()->route('profesores.propuestas');
-        }
-
+    public function principal(){
+        $imagenes = Imagen::all();
+        return view('inicio.principal', compact('imagenes'));
     }
 
 }

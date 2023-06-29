@@ -4,19 +4,29 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Cuenta extends Model
+
+class Cuenta extends Authenticable
 {
     use HasFactory;
     protected $table = 'cuentas';
-    protected $primaryKey = 'User';
+    protected $primaryKey = 'user';
+    protected $keyType = 'string';
+    public $incrementing = false;
+    public $timestamps = false;
 
     protected $fillable = [ 
-        'Password','Nombre','Apellido','Perfil_Id'
+        'password','nombre','apellido','perfil_id'
     ];
-    public $incrementing = false;
 
-    public function Imagenes():HasMany{
-        return $this->HasMany(Imagenes::class);
+    public function Perfil():BelongsTo{
+        return $this->belongsTo(Perfil::class);
+    } 
+
+    public function Imagen():HasMany{
+        return $this->hasMany(Imagen::class);
     }
 }

@@ -9,14 +9,14 @@ class Perfil extends Model
 {
     use HasFactory;
     protected $table = 'perfiles';
-    protected $primaryKey = 'Id';
-
-    protected $fillable = [ 
-        'Nombre'
-    ];
+    protected $primaryKey = 'id';
     public $incrementing = false;
 
-    public function Cuentas():HasMany{
-        return $this->HasMany(Cuentas::class);
+    protected $fillable = [ 
+        'nombre',
+    ];
+    
+    public function Cuenta():HasMany{
+        return $this->hasMany(Cuenta::class);
     }
 }

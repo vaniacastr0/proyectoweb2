@@ -16,8 +16,8 @@ class PerfilesSeeder extends Seeder
     public function run()
     {
         DB::table('perfiles')->insert([
-            ['Id'=>'1','Nombre' => 'Administrador'],
-            ['Id'=>'2','Nombre' => 'Artista'],
+            ['id'=>1,'nombre' => 'Administrador'],
+            ['id'=>2,'nombre' => 'Artista'],
         ]);
     }
 }

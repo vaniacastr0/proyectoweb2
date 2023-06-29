@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('perfiles', function (Blueprint $table) {
-            $table->integer('Id')->autoIncrement();
-            $table->string('Nombre',20);
+            $table->smallInteger('id')->autoIncrement();
+            $table->string('nombre');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('Perfiles');
+        Schema::dropIfExists('perfiles');
     }
 };

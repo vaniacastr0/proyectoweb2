@@ -14,19 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cuentas', function (Blueprint $table) {
-            $table->string('User',20)->primary();
-            $table->string('Password',100);
-            $table->string('Nombre',20);
-            $table->string('Apellido',20);
-            $table->integer('Perfil_Id');
+            $table->string('user')->primary();
+            $table->string('password');
+            $table->string('nombre',20);
+            $table->string('apellido',20);
+            $table->smallInteger('perfil_id');
             
-            $table->foreign('Perfil_Id')->references('Id')->on('Perfiles');
-            $table->timestamps();
+            $table->foreign('perfil_id')->references('id')->on('perfiles');
+            //$table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('Usuarios');
+        Schema::dropIfExists('cuentas');
     }
 };

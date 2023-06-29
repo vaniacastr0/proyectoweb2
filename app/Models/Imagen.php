@@ -9,10 +9,15 @@ class Imagen extends Model
 {
     use HasFactory;
     protected $table = 'imagenes';
-    protected $primaryKey = 'Id';
+    protected $primaryKey = 'id';
+    public $incrementing = false;
 
     protected $fillable = [ 
-        'Titulo','Archivo','Baneada','Motivo_ban','Cuenta_User'
+        'titulo','archivo','baneada','motivo_ban','cuenta_user'
     ];
-    public $incrementing = false;
+
+    public function Cuenta():BelongsTo{
+        return $this->belongsTo(Cuenta::class);
+    }
+    
 }

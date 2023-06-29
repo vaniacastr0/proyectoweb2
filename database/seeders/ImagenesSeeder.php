@@ -16,7 +16,7 @@ class ImagenesSeeder extends Seeder
     public function run()
     {
         DB::table('imagenes')->insert([
-            ['Titulo'=>'hola','Archivo'=>'Propuesta.pdf','Baneada'=>True,'Motivo_ban'=>'blabla','Cuenta_User'=>'vania@gmail.com'],
+            ['titulo'=>'hola','archivo'=>'Propuesta.pdf','baneada'=>True,'motivo_ban'=>'blabla','cuenta_user'=>'vania@gmail.com'],
         ]);
     }
 }

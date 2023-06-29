@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('imagenes', function (Blueprint $table) {
-            $table->integer('Id')->autoIncrement();
-            $table->string('Titulo',20);
-            $table->string('Archivo',100);
-            $table->boolean('Baneada')->default(false);
-            $table->text('Motivo_ban')->nullable();
-            $table->string('Cuenta_User',20);
+            $table->integer('id')->autoIncrement();
+            $table->string('titulo',20);
+            $table->string('archivo',100);
+            $table->boolean('baneada')->default(false);
+            $table->text('motivo_ban')->nullable();
+            $table->string('cuenta_user',20);
             
-            $table->foreign('Cuenta_User')->references('User')->on('Cuentas');
+            $table->foreign('cuenta_user')->references('user')->on('cuentas');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('imagenes');
     }
 };
