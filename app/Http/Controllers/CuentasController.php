@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cuentas;
+use App\Models\Cuenta;
 use App\Models\Perfil;
 use App\Models\Imagen;
 use App\Http\Requests\CuentasRequest;
@@ -35,7 +35,7 @@ class CuentasController extends Controller
         Auth::logout();
         return redirect()->route('home.index');
     }
-
+    // ARTISTA
     public function publicar(){
         return view('artistas.publicar');
     }
@@ -60,5 +60,25 @@ class CuentasController extends Controller
         $imagenes->titulo = $request->input('titulonuevo');
         $imagenes->save();
         return redirect()->route('artistas.verfoto');
+    }
+    // ADMINISTRADOR
+    public function perfiles(){
+        $perfiles = Perfil::all();
+        return view('administrador.perfiles', compact('perfiles'));
+    }
+
+    public function cuentas(){
+        $cuentas = Cuenta::all();
+        return view('administrador.cuentas',compact('cuentas'));
+    }
+
+    public function destroy_cuenta($user){
+        //dd($user);
+
+        $cuenta = Cuenta::findOrFail($user);
+        //dd($cuenta);
+        $cuenta->Imagen()->delete();
+        $cuenta->delete();
+        return redirect()->route('administrador.cuentas')->with('success', 'La cuenta y las imágenes relacionadas se han eliminado correctamente.');
     }
 }

@@ -36,13 +36,13 @@
                 </div>
             </div>
         </nav>
-    </div>
-    <div class="container d-flex justify-content-center mb-3 mt-3">
+    </div> 
+    <div class="container d-flex justify-content-center mb-3">
         <div class="row">
-            <div class="col-12 col-lg-6 justify-content-center mt-3">
+            <div class="col-8 justify-content-center">
                 @foreach($imagenes as $imagen)
                 <div class="card mb-3" style="width: 25rem;">
-                    <img src="../fotos/{{$imagen->archivo}}" class="card-img-top" alt="...">
+                    <img src="{{ asset('fotos/'. $imagen->archivo) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5>{{$imagen->titulo}}</h5>
                         <p class="card-title">{{$imagen->cuenta_user}}</p>

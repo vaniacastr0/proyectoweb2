@@ -1,6 +1,6 @@
 @extends('templates.master')
 @section('contenido-principal')
-<div class="container-fluid px-0">
+<!-- <div class="container-fluid px-0">
     <nav class="navbar navbar-expand-lg  mb-3 navbar-dark" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">FOTOLOG</a>
@@ -32,7 +32,7 @@
             </div>
         </div>
     </nav>
-</div>
+</div> -->
 <div class="container d-flex justify-content-center mb-3">
     <div class="row">
         <div class="col-12 col-lg-6 justify-content-center">
@@ -48,6 +48,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection

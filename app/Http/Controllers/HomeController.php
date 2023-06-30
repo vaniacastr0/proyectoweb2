@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Imagen;
 
 
+
 class HomeController extends Controller
 {
     public function __construct(){

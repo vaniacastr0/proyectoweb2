@@ -17,16 +17,27 @@
                             entregarle una retroalimentación.
                         </small>
                     </div>
+                    {{-- mensajes de error --}}
+                    @if ($errors->any())
+                    <div class="alert alert-warning">
+                        @foreach ($errors->all() as $error)
+                        {{ $error }}
+                        @endforeach
+                    </div>
+                    @endif
+                    {{-- fin mensajes de error --}}
                     <div class="card">
                         <div class="card-body">
                             <form action="{{route('artistas.postfoto')}}" method="POST" enctype="multipart/form-data">
+                                @method('POST')
                                 @csrf
                                 <div class="row">
                                     <div class="col-12 col-lg">
                                         <div class="col-12 col-lg">
                                             <div class="mb-3">
                                                 <label for="user" class="form-label">User</label>
-                                                <input type="text" id="user" name="user" class="form-control" placeholder="{{Auth::user()->user}}" disabled>
+                                                <input type="text" id="user" name="user" class="form-control"
+                                                    placeholder="{{Auth::user()->user}}" disabled>
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg">

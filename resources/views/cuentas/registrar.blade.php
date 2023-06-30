@@ -16,16 +16,25 @@
                     <div class="col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center"
                         style="height: 25rem;">
                         <div class="pb-2 bg-white">
-                            <img src="../../../imagenes/Fotolog_Logo.svg.png" alt="..."style="width: 20rem;">
+                            <img src="../../../imagenes/Fotolog_Logo.svg.png" alt="..." style="width: 20rem;">
                         </div>
                         <h6>Captura momentos y demuestra quien eres</h6>
                     </div>
                     <div class="col-12 col-lg-8 py-4">
                         <h4>Crea una nueva cuenta</h4>
                         <small>Proporcione sus credenciales para ingresar al sistema</small>
+                        {{-- mensajes de error --}}
+                        @if ($errors->any())
+                        <div class="alert alert-warning">
+                            @foreach ($errors->all() as $error)
+                            {{ $error }}
+                            @endforeach
+                        </div>
+                        @endif
+                        {{-- fin mensajes de error --}}
                         <div class="card">
                             <div class="card-body">
-                                <form method="POST" action="#">
+                                <form method="POST" action="{{route('sincuenta.registrar')}}">
                                     @method('POST')
                                     @csrf
                                     <div class="mb-3">
@@ -52,13 +61,13 @@
                                                     type="submit">Crear Cuenta</button>
                                             </div>
                                         </div>
-                                        <div class="col-2 d-flex text-end">
-                                            <div class="mb-3 px-0 text-end">
-                                                <a href="{{route('home.index')}}" class="btn btn-primary">Volver</a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex text-end mt-3">
+                            <div class="mb-3 px-0 text-end">
+                                <a href="{{route('home.index')}}" class="btn btn-primary">Volver</a>
                             </div>
                         </div>
                     </div>
