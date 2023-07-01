@@ -16,19 +16,23 @@ Route::post('/principal/sincuenta/filtrar',[SinCuentaController::class,'fotos_fi
 
 Route::get('/principal/administradores/perfiles',[CuentasController::class,'perfiles'])->name('administrador.perfiles');
 Route::get('/principal/administradores/cuentas',[CuentasController::class,'cuentas'])->name('administrador.cuentas');
+Route::get('/principal/administradores/banear',[CuentasController::class,'banear_fotos'])->name('administrador.banear_fotos');
 Route::get('/principal/administradores/{cuenta}',[CuentasController::class,'edit_cuenta'])->name('administrador.edit_cuenta');
-Route::post('/principal/administradores/{cuenta}',[CuentasController::class,'update_cuenta'])->name('administrador.update_cuenta');
+Route::post('/principal/administradores/banear/{foto}',[CuentasController::class,'update_foto'])->name('administrador.update_foto');
+Route::post('/principal/administradores/update/{cuenta}',[CuentasController::class,'update_cuenta'])->name('administrador.update_cuenta');
 Route::delete('/principal/administradores/destroy/{cuenta}',[CuentasController::class,'destroy_cuenta'])->name('administrador.destroy_cuenta');
 
 Route::post('/cuentas/login',[CuentasController::class,'autenticar'])->name('cuentas.autenticar');
 Route::get('/cuentas/logout',[CuentasController::class,'logout'])->name('cuentas.logout');
 Route::get('/cuentas/registrarse',[RegistrarseController::class,'registrarse'])->name('cuentas.registrarse');
 
-Route::get('/artistas/publicar',[CuentasController::class,'publicar'])->name('artistas.publicarfoto');
-Route::post('/artistas/publicar/post',[ArchivoController::class,'post'])->name('artistas.postfoto');
+Route::get('/artistas/publicar',[CuentasController::class,'publicar'])->name('artistas.publicar_foto');
+Route::get('/artistas/editar/{imagen}',[CuentasController::class,'editar'])->name('artistas.editarfoto');
 Route::get('/artistas/editar/{imagen}',[CuentasController::class,'editar'])->name('artistas.editarfoto');
 Route::get('/artistas/ver',[CuentasController::class,'ver'])->name('artistas.verfoto');
-Route::delete('/artistas/{imagen}',[CuentasController::class,'destroy'])->name('artistas.destroy');
+Route::get('/artistas/fotoban',[CuentasController::class,'verfoto_ban'])->name('artistas.verfoto_ban');
+Route::post('/artistas/publicar/post',[ArchivoController::class,'post'])->name('artistas.postfoto');
 Route::post('/artistas/{imagen}',[CuentasController::class,'update'])->name('artistas.update');
+Route::delete('/artistas/{imagen}',[CuentasController::class,'destroy'])->name('artistas.destroy');
 
 Route::resource('/artistas',CuentasController::class);

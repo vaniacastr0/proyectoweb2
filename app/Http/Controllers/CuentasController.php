@@ -13,6 +13,7 @@ use Gate;
 
 class CuentasController extends Controller
 {
+    //CUENTAS
     public function __construct(){
         $this->middleware('auth')->except(['autenticar','logout']);
     }
@@ -45,6 +46,11 @@ class CuentasController extends Controller
         return view('artistas.editar', compact('imagenes'));
     }
 
+    public function verfoto_ban(){
+        $imagenes = Imagen::all();
+        return view('artistas.fotosban', compact('imagenes'));
+    }
+
     public function ver(){
         $imagenes = Imagen::all();
         return view('artistas.ver', compact('imagenes'));
@@ -74,7 +80,6 @@ class CuentasController extends Controller
 
     public function destroy_cuenta($user){
         //dd($user);
-
         $cuenta = Cuenta::findOrFail($user);
         //dd($cuenta);
         $cuenta->Imagen()->delete();
@@ -85,7 +90,6 @@ class CuentasController extends Controller
     public function edit_cuenta($cuenta){
         $cuenta = Cuenta::find($cuenta);
         return view('administrador.edit',compact('cuenta'));
-
     }
 
     public function update_cuenta(Request $request,$cuenta){
@@ -95,6 +99,19 @@ class CuentasController extends Controller
         $cuenta->apellido = $request->input('apellido');
         $cuenta->save();
         return view('administrador.cuentas', compact('cuentas'));
+    }
 
+    public function banear_fotos(){
+        $imagenes = Imagen::all();
+        return view('administrador.banear',compact('imagenes'));
+    }
+
+    public function update_foto(Request $request,$id){
+        $imagenes = Imagen::all();
+        $imagen = Imagen::find($id);
+        $imagen->baneada = true;
+        $imagen->motivo_ban = $request->input('motivo_ban');
+        $imagen->save();
+        return view('inicio.principal',compact('imagenes'));
     }
 }

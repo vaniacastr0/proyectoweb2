@@ -31,7 +31,7 @@ $perfil_id = [1 => 'Administrador',2=>'Artista'];
     </div>
     <nav class="navbar navbar-expand-lg  mb-3 navbar-dark" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">FOTOLOG</a>
+            <a class="navbar-brand" href="{{route('home.index')}}">FOTOLOG</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -40,7 +40,7 @@ $perfil_id = [1 => 'Administrador',2=>'Artista'];
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="{{route('inicio.principal')}}">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{route('cuentas.registrarse')}}">Crea Cuenta</a>
@@ -52,9 +52,9 @@ $perfil_id = [1 => 'Administrador',2=>'Artista'];
                             Mi cuenta
                         </a>
                         <ul class="dropdown-menu navbar-dark bg-dark">
-                            <li><a class="dropdown-item text-white" href="{{route('artistas.publicarfoto')}}">Publicar una foto</a></li>
+                            <li><a class="dropdown-item text-white" href="{{route('artistas.publicar_foto')}}">Publicar una foto</a></li>
                             <li><a class="dropdown-item text-white" href="{{route('artistas.verfoto')}}">Ver mis fotos</a></li>
-                            <li><a class="dropdown-item text-white" href="#">Ver mis fotos baneadas</a></li>
+                            <li><a class="dropdown-item text-white" href="{{route('artistas.verfoto_ban')}}">Ver mis fotos baneadas</a></li>
                         </ul>
                     </li>
                     @endif
@@ -67,7 +67,7 @@ $perfil_id = [1 => 'Administrador',2=>'Artista'];
                         <ul class="dropdown-menu navbar-dark bg-dark">
                             <li><a class="dropdown-item text-white" href="{{route('administrador.perfiles')}}">Listar perfiles</a></li>
                             <li><a class="dropdown-item text-white" href="{{route('administrador.cuentas')}}">Gestionar cuentas</a></li>
-                            <li><a class="dropdown-item text-white" href="#">Banear/Desbanear fotos</a></li>
+                            <li><a class="dropdown-item text-white" href="{{route('administrador.banear_fotos')}}">Banear/Desbanear fotos</a></li>
                         </ul>
                     </li>
                     @endif
