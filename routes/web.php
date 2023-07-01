@@ -16,6 +16,8 @@ Route::post('/principal/sincuenta/filtrar',[SinCuentaController::class,'fotos_fi
 
 Route::get('/principal/administradores/perfiles',[CuentasController::class,'perfiles'])->name('administrador.perfiles');
 Route::get('/principal/administradores/cuentas',[CuentasController::class,'cuentas'])->name('administrador.cuentas');
+Route::get('/principal/administradores/{cuenta}',[CuentasController::class,'edit_cuenta'])->name('administrador.edit_cuenta');
+Route::post('/principal/administradores/{cuenta}',[CuentasController::class,'update_cuenta'])->name('administrador.update_cuenta');
 Route::delete('/principal/administradores/destroy/{cuenta}',[CuentasController::class,'destroy_cuenta'])->name('administrador.destroy_cuenta');
 
 Route::post('/cuentas/login',[CuentasController::class,'autenticar'])->name('cuentas.autenticar');

@@ -1,3 +1,7 @@
+<!-- @php
+$perfil_id = [1 => 'Administrador',2=>'Artista'];
+@endphp -->
+
 @extends('templates.master')
 
 @section('hojas-estilo')
@@ -18,22 +22,30 @@
                 <thead>
                     <tr>
                         <th>N</th>
+                        <!-- <th>Cuenta</th> -->
                         <th>User</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
-                        <th>Agregar</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($cuentas as $index => $cuenta)
                     <tr>
                         <td class="align-middle">{{$index+1}}</td>
+                        <!-- <td class="align-middle">{{$cuenta->perfil_id}}</td> -->
                         <td class="align-middle">{{$cuenta->user}}</td>
                         <td class="align-middle">{{$cuenta->nombre}}</td>
                         <td class="align-middle">{{$cuenta->apellido}}</td>
-                        <td class="align-middle">editar</td>
+                        <td class="align-middle">
+                            <div class="col d-flex justify-content-center">
+                                <a href="{{ route('administrador.edit_cuenta', $cuenta) }}"
+                                    class="btn btn-primary">
+                                    <i class="material-symbols-outlined">edit</i>
+                                </a>
+                            </div>
+                        </td>
                         <td class="align-middle">
                             <div class="modal fade" id="borrarModal{{$cuenta->user}}" tabindex="-1"
                                 aria-labelledby="borrarModalLabel{{$cuenta->user}}" aria-hidden="true">
@@ -79,7 +91,6 @@
                                 </button>
                             </div>
                         </td>
-                        <td class="align-middle">agregar</td>
                     </tr>
                     @endforeach
                 </tbody>

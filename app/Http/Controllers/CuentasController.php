@@ -81,4 +81,20 @@ class CuentasController extends Controller
         $cuenta->delete();
         return redirect()->route('administrador.cuentas')->with('success', 'La cuenta y las imágenes relacionadas se han eliminado correctamente.');
     }
+
+    public function edit_cuenta($cuenta){
+        $cuenta = Cuenta::find($cuenta);
+        return view('administrador.edit',compact('cuenta'));
+
+    }
+
+    public function update_cuenta(Request $request,$cuenta){
+        $cuentas = Cuenta::all();
+        $cuenta = Cuenta::find($cuenta);
+        $cuenta->nombre = $request->input('nombre');
+        $cuenta->apellido = $request->input('apellido');
+        $cuenta->save();
+        return view('administrador.cuentas', compact('cuentas'));
+
+    }
 }
